@@ -31,8 +31,6 @@ class LocationController extends Controller
         ]);
         $location = Location::find($id);
         if($location){
-
-        
         $location->street=$request->street;
         $location->building=$request->building;
         $location->area=$request->area;

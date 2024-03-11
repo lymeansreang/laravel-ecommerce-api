@@ -31,46 +31,58 @@ Route::group([
 });
 
 //Brand CRUD
-Route::controller(BrandsController::class)->group(function(){
-    Route::get('index','index');
-    Route::get('show/{id}','show');
-    Route::post('store','store');
-    Route::put('update_brand/{id}','update_brand');
-    Route::delete('delete_brand/{id}','delete_brand');
+Route::group(['prefix'=>'brands'], function($router){
+    Route::controller(BrandsController::class)->group(function(){
+        Route::get('index','index');
+        Route::get('show/{id}','show');
+        Route::post('store','store');
+        Route::put('update_brand/{id}','update_brand');
+        Route::delete('delete_brand/{id}','delete_brand');
+    });
 });
 
 //Category CRUD
-Route::controller(CategoryController::class)->group(function(){
-    Route::get('index','index');
-    Route::get('show/{id}','show');
-    Route::post('store','store');
-    Route::put('update_category/{id}','update_category');
-    Route::delete('delete_category/{id}','delete_category');
+Route::group(['prefix'=>'category'], function($router){
+    Route::controller(CategoryController::class)->group(function(){
+        Route::get('index','index');
+        Route::get('show/{id}','show');
+        Route::post('store','store');
+        Route::put('update_category/{id}','update_category');
+        Route::delete('delete_category/{id}','delete_category');
+    });
 });
+
 
 //Location CRUD
-Route::controller(LocationController::class)->group(function(){
-    Route::post('store','store');
-    Route::put('update/{id}','update');
-    Route::delete('destroy/{id}','destory');
+Route::group(['prefix'=>'locations'], function($router){
+    Route::controller(LocationController::class)->group(function(){
+        Route::post('store','store');
+        Route::put('update/{id}','update');
+        Route::delete('destroy/{id}','destory');
+    });
 });
+
 
 //Product CRUD
-Route::controller(ProductController::class)->group(function(){
-    Route::get('index','index');
-    Route::get('show/{id}','show');
-    Route::post('store','store');
-    Route::put('update/{id}','update');
-    Route::delete('destroy/{id}','destroy');
+Route::group(['prefix'=>'product'], function($router){
+    Route::controller(ProductController::class)->group(function(){
+        Route::get('index','index');
+        Route::get('show/{id}','show');
+        Route::post('store','store');
+        Route::put('update/{id}','update');
+        Route::delete('destroy/{id}','destroy');
+    });
 });
 
-//Order CRUD
-Route::controller(OrderController::class)->group(function(){
-    Route::get('index','index');
-    Route::get('show/{id}','show');
-    Route::post('store','store');
-    Route::get('get_order_items/{id}','get_order_items');
-    Route::get('get_user_order/{id}','get_user_order');
-    Route::post('change_order_status/{id}','v');
 
+//Order CRUD
+Route::group(['prefix'=>'orders'], function($router){
+    Route::controller(BrandsController::class)->group(function(){
+        Route::get('index','index');
+        Route::get('show/{id}','show');
+        Route::post('store','store');
+        Route::get('get_order_items/{id}','get_order_items');
+        Route::get('get_user_orders/{id}','get_user_orders');
+        Route::post('change_order_status/{id}','change_order_status');
+    });
 });
