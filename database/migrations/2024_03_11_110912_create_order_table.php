@@ -19,7 +19,7 @@ return new class extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('location_id')->unsigned();
             $table->double('total_price',12,2);
-            $table->string('date of delivery');
+            $table->string('date_of_delivery');
 
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('location_id')->references('id')->on('locations')->onDelete('cascade');
