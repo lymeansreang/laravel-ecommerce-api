@@ -69,7 +69,7 @@ class ProductController extends Controller
             'price'=>'required|numberic',
             'category_id'=>'required|numberic',
             'brand_id'=>'required|numberic',
-            'discount'=>'required|numberic',
+            'discount'=>'numberic',
             'amount'=>'required|numberic',
             'image'=>'required',
         ]);
