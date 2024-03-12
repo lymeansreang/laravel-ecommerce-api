@@ -21,8 +21,8 @@ return new class extends Migration
             $table->double('total_price',12,2);
             $table->string('date_of_delivery');
 
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('location_id')->references('id')->on('locations')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade');
 
             $table->timestamps();
         });
